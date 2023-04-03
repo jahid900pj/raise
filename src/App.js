@@ -1,23 +1,35 @@
 import logo from './logo.svg';
 import './App.css';
+import PersonDetail from './Components/PersonDetail/PersonDetail';
+import AllPersonList from './Components/AllPersonList/AllPersonList';
+import { useState } from 'react';
+import DefaultPersonDetail from './Components/DefaultPersonDetail/DefaultPersonDetail';
+
 
 function App() {
+  const [clickedPersonData, setClickedPersonData] = useState(null)
+  // console.log(clickedPersonData)
+  const [defaultData, setDefaultData] = useState([])
+  console.log(defaultData)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div class="relative">
+        {
+          clickedPersonData === null ?
+            <>
+              {defaultData && <DefaultPersonDetail defaultData={defaultData}></DefaultPersonDetail>}
+            </> :
+            <>
+              {clickedPersonData && <PersonDetail clickedPersonData={clickedPersonData} ></PersonDetail>}
+            </>
+
+        }
+
+        <div class="w-full md:w-5/12 ml-auto">
+          <AllPersonList setClickedPersonData={setClickedPersonData} clickedPersonData={clickedPersonData} setDefaultData={setDefaultData}></AllPersonList>
+        </div>
+      </div>
     </div>
   );
 }
