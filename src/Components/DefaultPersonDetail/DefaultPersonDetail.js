@@ -1,11 +1,30 @@
 import React from 'react';
 
 const DefaultPersonDetail = ({ defaultData }) => {
-    const { Img } = defaultData;
+    const { Img, id, Name, Date, Location, Time, Gender } = defaultData;
     return (
-        <div class="relative md:fixed w-full md:w-7/12 min-h-screen inset-0">
-            <h1 class="absolute bottom-0 left-0 p-20 text-white text-8xl">Benny<br />The Pup</h1>
-            <img src={Img} class="object-cover w-full h-full" alt='' />
+        <div class="relative md:fixed lg:w-9/12 md:w-7/12 min-h-screen inset-0">
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 justify-items-center'>
+                <div className='grid content-start mt-24'>
+                    <div className='font-semibold'>
+                        <h5 className='text-2xl '>{id}</h5>
+                        <h5 className='text-xl '>Person detected.</h5>
+                    </div>
+                    <div className='text-lg font-medium	mt-10 mb-10'>
+                        <p>Name: {Name}</p>
+                        <p>Location: {Location}</p>
+                        <p>Date : {Date}</p>
+                        <p>Time: {Time}</p>
+                    </div>
+                    <div className='text-lg font-medium	'>
+                        <p>Description : {Name} detected at <br /> {Location} on {Date}</p>
+                    </div>
+                </div>
+                <div className=''>
+                    <p className='text-2xl font-bold mb-4 mt-16'>{Gender}</p>
+                    <img className='w-4/5 h-screen object-cover' src={Img} alt="" />
+                </div>
+            </div>
         </div>
     );
 };

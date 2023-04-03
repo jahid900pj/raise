@@ -2,8 +2,9 @@ import { onValue, ref } from 'firebase/database';
 import React, { useEffect, useState } from 'react';
 import { database } from '../../Firebase/firebase.init';
 import SinglePersonList from '../SinglePersonList/SinglePersonList';
+import './AllPersonList.css'
 
-const AllPersonList = ({ setClickedPersonData, clickedPersonData, setDefaultData }) => {
+const AllPersonList = ({ setClickedPersonData, clickedPersonData, setDefaultData, setMaleFemaleCount }) => {
     // all data store here
     const [data, setData] = useState([]);
     // console.log(data)
@@ -14,6 +15,12 @@ const AllPersonList = ({ setClickedPersonData, clickedPersonData, setDefaultData
         }
 
     }
+
+    if (data && data.length > 0) {
+        setMaleFemaleCount(data)
+    }
+
+
 
 
 
@@ -29,7 +36,7 @@ const AllPersonList = ({ setClickedPersonData, clickedPersonData, setDefaultData
     // console.log(data.allData)
     return (
         <>
-            <div class="  flex justify-center items-center flex-col p-10">
+            <div class="flex justify-center items-center flex-col pt-10 ps-2 pe-2">
 
                 {
                     data && data.map(singleData =>
@@ -42,6 +49,7 @@ const AllPersonList = ({ setClickedPersonData, clickedPersonData, setDefaultData
             </div>
 
         </>
+
     );
 };
 
