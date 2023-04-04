@@ -5,14 +5,17 @@ const PersonDetail = ({ clickedPersonData, defaultData }) => {
 
 
     return (
-        <div class="relative md:fixed lg:w-9/12 md:w-7/12 min-h-screen inset-0">
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 justify-items-center'>
+        <div class="relative md:fixed lg:w-9/12 md:w-7/12 min-h-screen inset-0 ">
+
+            <div className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 justify-items-center'>
+
+
                 <div className='grid content-start mt-24'>
-                    <div className='font-semibold'>
+                    <div className='font-bold'>
                         <h5 className='text-2xl '>{id}</h5>
                         <h5 className='text-xl '>Person detected.</h5>
                     </div>
-                    <div className='text-lg font-medium	mt-10 mb-10'>
+                    <div className='text-xl font-medium	mt-16 mb-16'>
                         <p>Name: {Name}</p>
                         <p>Location: {Location}</p>
                         <p>Date : {Date}</p>
@@ -27,7 +30,7 @@ const PersonDetail = ({ clickedPersonData, defaultData }) => {
                     <img className='w-4/5 h-screen object-cover' src={Img} alt="" />
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
