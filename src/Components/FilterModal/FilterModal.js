@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const FilterModal = ({ data, setData }) => {
+const FilterModal = ({ data, setData, setOpenModal }) => {
     const [treatDate, setTreatDate] = useState('');
     // console.log(treatDate)
     const handleChange = event => {
@@ -16,15 +16,16 @@ const FilterModal = ({ data, setData }) => {
         const gender = allData.gender.value;
         const location = allData.location.value
 
-        if (gender && location && treatDate) {
+        if (gender || location || treatDate) {
             const Filter = data.filter(da => {
                 return (
-                    da.Gender === gender &&
-                    da.Location === location &&
+                    da.Gender === gender ||
+                    da.Location === location ||
                     da.Date === treatDate
                 )
             })
             setData(Filter)
+            setOpenModal(false)
         }
 
     }

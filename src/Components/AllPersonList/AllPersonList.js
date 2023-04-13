@@ -10,6 +10,7 @@ const AllPersonList = ({ setClickedPersonData, clickedPersonData, setDefaultData
     // all data store here
     const [data, setData] = useState([]);
     // console.log(data)
+    const [openModal, setOpenModal] = useState(true)
 
     if (clickedPersonData === null) {
         if (data && data.length > 0) {
@@ -48,9 +49,15 @@ const AllPersonList = ({ setClickedPersonData, clickedPersonData, setDefaultData
                         <label htmlFor="edit-virtual-appointment" className="btn btn-square btn-ghost">
                             <FaFilter className='w-5 h-5'></FaFilter>
                         </label>
+
+
                     </div>
                 </div>
-                <FilterModal data={data} setData={setData}></FilterModal>
+                {
+                    openModal && <FilterModal data={data} setData={setData} setOpenModal={setOpenModal}></FilterModal>
+
+                }
+
 
 
 
