@@ -53,10 +53,9 @@ const AllPersonList = ({ setClickedPersonData, clickedPersonData, setDefaultData
 
                     </div>
                 </div>
-                {
-                    openModal && <FilterModal data={data} setData={setData} setOpenModal={setOpenModal}></FilterModal>
+                <FilterModal setClickedPersonData={setClickedPersonData} data={data} setData={setData} setOpenModal={setOpenModal}></FilterModal>
 
-                }
+
 
 
 

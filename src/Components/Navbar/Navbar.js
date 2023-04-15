@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { RxMagnifyingGlass } from 'react-icons/rx'
+
 
 const Navbar = ({ maleFemaleCount }) => {
     /// male and female count
@@ -9,7 +11,11 @@ const Navbar = ({ maleFemaleCount }) => {
 
         <div className="navbar bg-primary sticky top-0">
             <div className="flex-1">
-                <a className="btn btn-ghost normal-case text-3xl text-lime-700" >SECQURAISE</a>
+                <h2 className='lg:col-span-2 titleLogo uppercase text-3xl font-bold text-teal-700'><span className='text-4xl'>S</span>ecqur<span className='text-4xl text-red-600'>ai</span>se</h2>
+            </div>
+            <div className='hidden md:flex items-center gap-2 xl:gap-3 mr-6'>
+                <RxMagnifyingGlass className='text-white text-4xl font-bold' />
+                <input type="text" placeholder="Search ...." className="input input-sm w-full border-none rounded-full bg-blue-700" />
             </div>
             <div className="flex-none">
                 <ul className="menu menu-horizontal px-1">

@@ -1,12 +1,15 @@
 import React from 'react';
+import Sidebar from '../Sidebar/Sidebar';
+
 
 const DefaultPersonDetail = ({ defaultData }) => {
     const { Img, id, Name, Date, Location, Time, Gender } = defaultData;
     return (
         <div class="relative md:fixed lg:w-9/12 md:w-7/12 min-h-screen inset-0 ">
 
-            <div className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 justify-items-center'>
 
+            <div className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 '>
+                <Sidebar></Sidebar>
 
                 <div className='grid content-start mt-24'>
                     <div className='font-bold'>
@@ -23,9 +26,9 @@ const DefaultPersonDetail = ({ defaultData }) => {
                         <p>Description : {Name} detected at <br /> {Location} on {Date}</p>
                     </div>
                 </div>
-                <div className=''>
+                <div className='w-full'>
                     <p className='text-2xl font-bold mb-4 mt-16'>{Gender}</p>
-                    <img className='w-4/5 h-screen object-cover' src={Img} alt="" />
+                    <img className='w-11/12 h-screen object-cover mb-10' src={Img} alt="" />
                 </div>
             </div>
         </div >
