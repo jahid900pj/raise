@@ -2,7 +2,7 @@ import { onValue, ref } from 'firebase/database';
 import React, { useEffect, useRef, useState } from 'react';
 import { database } from '../../Firebase/firebase.init';
 
-const FilterModal = ({ data, setData, setOpenModal }) => {
+const FilterModal = ({ data, setData, setOpenModal, setClickedPersonData }) => {
     const [treatDate, setTreatDate] = useState('');
     const [filterData, SetFilterData] = useState([])
 
@@ -48,6 +48,7 @@ const FilterModal = ({ data, setData, setOpenModal }) => {
                 )
             })
             setData(Filter)
+            setClickedPersonData(null)
 
         }
 
