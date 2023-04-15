@@ -28,7 +28,7 @@ const DefaultPersonDetail = ({ defaultData }) => {
                 </div>
                 <div className='w-full'>
                     <p className='text-2xl font-bold mb-4 mt-16'>{Gender}</p>
-                    <img className='w-4/5 h-screen object-cover mb-10' src={Img} alt="" />
+                    <img className='w-11/12 h-screen object-cover mb-10' src={Img} alt="" />
                 </div>
             </div>
         </div >

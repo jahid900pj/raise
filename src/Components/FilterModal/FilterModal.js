@@ -1,14 +1,37 @@
-import React, { useState } from 'react';
+import { onValue, ref } from 'firebase/database';
+import React, { useEffect, useRef, useState } from 'react';
+import { database } from '../../Firebase/firebase.init';
 
 const FilterModal = ({ data, setData, setOpenModal }) => {
     const [treatDate, setTreatDate] = useState('');
+    const [filterData, SetFilterData] = useState([])
+
+
+    useEffect(() => {
+        onValue(ref(database), snapshot => {
+            const data = snapshot.val()
+            if (data !== undefined) {
+                SetFilterData(data.allData)
+            }
+        })
+    }, []);
+
+
+    const buttonRef = useRef(null);
+
+    function handleClick() {
+        buttonRef.current.click();
+    }
+
     // console.log(treatDate)
     const handleChange = event => {
         setTreatDate(event.target.value);
     };
     // console.log(data)
     // console.log(test)
-
+    function handleClick() {
+        buttonRef.current.click();
+    }
 
     const handleFilter = (e) => {
         e.preventDefault();
@@ -17,7 +40,7 @@ const FilterModal = ({ data, setData, setOpenModal }) => {
         const location = allData.location.value
 
         if (gender || location || treatDate) {
-            const Filter = data.filter(da => {
+            const Filter = filterData.filter(da => {
                 return (
                     da.Gender === gender ||
                     da.Location === location ||
@@ -25,7 +48,7 @@ const FilterModal = ({ data, setData, setOpenModal }) => {
                 )
             })
             setData(Filter)
-            setOpenModal(false)
+
         }
 
     }
@@ -75,8 +98,8 @@ const FilterModal = ({ data, setData, setOpenModal }) => {
                         </div>
 
                         <div className='flex justify-end items-center gap-4 mt-4'>
-                            <button type="submit" className='btn glass bg-blue-500 hover:bg-blue-700 text-black btn-outline'>Confirm</button>
-                            <label htmlFor="edit-virtual-appointment" className="btn glass bg-teal-500 hover:bg-teal-600 text-black btn-outline">Cancel</label>
+                            <button onClick={handleClick} type="submit" className='btn glass bg-blue-500 hover:bg-blue-700 text-black btn-outline' >Confirm</button>
+                            <label htmlFor="edit-virtual-appointment" className="btn glass bg-teal-500 hover:bg-teal-600 text-black btn-outline" ref={buttonRef}>Cancel</label>
                         </div>
                     </form>
                 </div>
